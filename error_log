@@ -1,0 +1,18 @@
+[03-Sep-2024 08:39:20 UTC] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423" not found in /home/supmtiou/e-document.supmtioujda.ma/vendor/composer/autoload_real.php:32
+Stack trace:
+#0 /home/supmtiou/e-document.supmtioujda.ma/vendor/autoload.php(25): ComposerAutoloaderInit7e8c3c14ff33b199b4a0838993eb8423::getLoader()
+#1 /home/supmtiou/e-document.supmtioujda.ma/artisan(9): require('/home/supmtiou/...')
+#2 {main}
+  thrown in /home/supmtiou/e-document.supmtioujda.ma/vendor/composer/autoload_real.php on line 32
+[03-Sep-2024 08:39:43 UTC] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423" not found in /home/supmtiou/e-document.supmtioujda.ma/vendor/composer/autoload_real.php:32
+Stack trace:
+#0 /home/supmtiou/e-document.supmtioujda.ma/vendor/autoload.php(25): ComposerAutoloaderInit7e8c3c14ff33b199b4a0838993eb8423::getLoader()
+#1 /home/supmtiou/e-document.supmtioujda.ma/artisan(9): require('/home/supmtiou/...')
+#2 {main}
+  thrown in /home/supmtiou/e-document.supmtioujda.ma/vendor/composer/autoload_real.php on line 32
+[03-Sep-2024 08:51:46 UTC] PHP Fatal error:  Uncaught Error: Class "Composer\Autoload\ComposerStaticInit7e8c3c14ff33b199b4a0838993eb8423" not found in /home/supmtiou/e-document.supmtioujda.ma/vendor/composer/autoload_real.php:32
+Stack trace:
+#0 /home/supmtiou/e-document.supmtioujda.ma/vendor/autoload.php(25): ComposerAutoloaderInit7e8c3c14ff33b199b4a0838993eb8423::getLoader()
+#1 /home/supmtiou/e-document.supmtioujda.ma/artisan(9): require('/home/supmtiou/...')
+#2 {main}
+  thrown in /home/supmtiou/e-document.supmtioujda.ma/vendor/composer/autoload_real.php on line 32
