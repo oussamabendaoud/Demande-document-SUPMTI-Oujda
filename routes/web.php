@@ -7,14 +7,20 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DemandeDocumentController;
 use App\Http\Controllers\ArchiveController;
+use App\Http\Controllers\Students\StudentsRegistrationController;
 
 
 
-Route::get('/', [DemandeDocumentController::class, 'create'])->name('demande.create');
+Route::get('/a', [DemandeDocumentController::class, 'create'])->name('demande.create');
 Route::post('/demande-document', [DemandeDocumentController::class, 'store'])->name('demande.store');
 Route::post('/archiver-demandes-envoyees', [DemandeDocumentController::class, 'archiverDemandesEnvoyees'])->name('archiver_demandes_envoyees');
 Route::get('/documents-envoyes-archives', [ArchiveController::class, 'documentsEnvoyesArchives'])->name('documents.envoyes_archives');
 Route::get('/demandes-envoyes-archives', [ArchiveController::class, 'demandesEnvoyesArchives'])->name('demandes.envoyes_archives');
+  
+Route::get('/students/registration', [StudentsRegistrationController::class, 'showRegistrationForm'])->name('students.registration');
+Route::post('/students/registration', [StudentsRegistrationController::class, 'store'])->name('students.store');
+Route::get('/students/list', [StudentsRegistrationController::class, 'showList'])->name('students.list');
+
 
 Auth::routes();
 

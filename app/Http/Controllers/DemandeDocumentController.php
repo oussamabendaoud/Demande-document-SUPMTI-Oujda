@@ -144,7 +144,7 @@ class DemandeDocumentController extends Controller
     // Méthode pour afficher le formulaire de demande de document
     public function create()
     {
-        return view('demandedocument'); // Retourne la vue demande_document.blade.php
+        return view('DemandeDocument'); // Retourne la vue demande_document.blade.php
     }
 
     public function store(Request $request)
