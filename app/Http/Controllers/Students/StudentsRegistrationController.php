@@ -95,6 +95,9 @@ class StudentsRegistrationController extends Controller
             if ($request->hasFile('diplome_bac2')) {
                 $validated['diplome_bac2'] = $request->file('diplome_bac2')->store('documents/bac2');
             }
+            if ($request->hasFile('att_rs_bac2')) {
+                $validated['att_rs_bac2'] = $request->file('att_rs_bac2')->store('documents/bac2');
+            }
             if ($request->hasFile('relv_note_bac2')) {
                 $validated['relv_note_bac2'] = $request->file('relv_note_bac2')->store('documents/bac2');
             }
@@ -105,6 +108,9 @@ class StudentsRegistrationController extends Controller
             }
             if ($request->hasFile('diplome_bac3')) {
                 $validated['diplome_bac3'] = $request->file('diplome_bac3')->store('documents/bac3');
+            }
+            if ($request->hasFile('att_rs_bac3')) {
+                $validated['att_rs_bac3'] = $request->file('att_rs_bac3')->store('documents/bac3');
             }
             if ($request->hasFile('relv_note_bac3')) {
                 $validated['relv_note_bac3'] = $request->file('relv_note_bac3')->store('documents/bac3');
