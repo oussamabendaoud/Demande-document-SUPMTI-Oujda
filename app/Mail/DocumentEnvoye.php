@@ -12,25 +12,35 @@ class DocumentEnvoye extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $document;
+    public $documents; // Change to handle multiple documents
     public $nomEtudiant;
 
-    public function __construct($document, $nomEtudiant)
+    public function __construct($documents, $nomEtudiant)
     {
-        $this->document = $document;
+        // Expect an array of documents (files)
+        $this->documents = $documents;
         $this->nomEtudiant = $nomEtudiant;
     }
 
     public function build()
     {
-        return $this->view('emails.document_envoye')
-                    ->subject('Votre document demandé')
-                    ->attach($this->document->getRealPath(), [
-                        'as' => $this->document->getClientOriginalName(),
-                        'mime' => $this->document->getMimeType(),
-                    ])
-                    ->with([
-                        'nomEtudiant' => $this->nomEtudiant,
-                    ]);
+        // Start building the email
+        $email = $this->view('emails.document_envoye')
+                      ->subject('Votre document demandé')
+                      ->with([
+                          'nomEtudiant' => $this->nomEtudiant,
+                      ]);
+
+        // Loop through each document (file) and attach it to the email
+        foreach ($this->documents as $document) {
+            if ($document instanceof \Illuminate\Http\UploadedFile) {
+                $email->attach($document->getRealPath(), [
+                    'as' => $document->getClientOriginalName(),
+                    'mime' => $document->getMimeType(),
+                ]);
+            }
+        }
+
+        return $email;
     }
 }

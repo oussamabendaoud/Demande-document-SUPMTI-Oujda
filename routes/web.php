@@ -26,11 +26,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
-    // Route pour traiter la soumission du formulaire
+    // Route pour traiter la soumission du formulairex
     Route::post('/demande-document', [DemandeDocumentController::class, 'store'])->name('demande.store');
     Route::get('/service-communication', [DemandeDocumentController::class, 'index'])->name('service.communication');
     Route::post('/demande/{id}/envoyer', [DemandeDocumentController::class, 'envoyer'])->name('demande.envoyer');

@@ -14,6 +14,6 @@ class StudentsRegistration extends Model
         'baccalaureate_series', 'baccalaureate_year', 'diploma_speciality', 
         'diploma_mention', 'diploma_location', 'first_registration_year',
         'handicap', 'resident', 'civil_servant', 'scholarship_percentage', 
-        'mobility_student', 'documents_submitted'
+        'mobility_student', 'documents_submitted','niveaux','cin','diplome_bac','relv_note','att_rs'
     ];
 }

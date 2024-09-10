@@ -57,21 +57,24 @@ class DemandeDocumentController extends Controller
 
     public function envoyerDocument(Request $request, $id)
     {
+        // Validate that multiple files are uploaded, they are valid files, and no more than 10MB each
         $request->validate([
-            'file' => 'required|file|max:10240',  // Maximum 10MB
+            'files.*' => 'required|file|max:10240',  // Maximum 10MB per file
         ]);
     
-        // Récupérer la demande
-        $demande = DemandeArchive::findOrFail($id); // Change to DemandeArchive
-        $document = $request->file('file');
+        // Retrieve the request
+        $demande = DemandeArchive::findOrFail($id);
     
-        // Envoyer l'email avec le document attaché
-        Mail::to($demande->email)->send(new DocumentEnvoye($document, $demande->nom));
+        // Retrieve the files from the request (this will be an array of files)
+        $files = $request->file('files');
     
-        // Vérifier que 'attestations' n'est pas null ou vide, sinon définir une valeur par défaut
+        // Send an email with multiple documents attached
+        Mail::to($demande->email)->send(new DocumentEnvoye($files, $demande->nom));
+    
+        // Verify that 'attestations' is not null or empty, otherwise set a default value
         $attestations = $demande->attestations ?: 'Aucune attestation spécifiée';
     
-        // Archiver la demande
+        // Archive the request
         Archive::create([
             'nom' => $demande->nom,
             'prenom' => $demande->prenom,
@@ -85,12 +88,13 @@ class DemandeDocumentController extends Controller
             'updated_at' => now(),
         ]);
     
-        // Supprimer la demande de la table "demande_archive"
+        // Delete the request from the "demande_archive" table
         $demande->delete();
     
-        // Rediriger avec un message de succès
-        return redirect()->route('service.scolarite')->with('success', 'Le document a été envoyé, la demande a été archivée et supprimée de la liste.');
+        // Redirect with a success message
+        return redirect()->route('service.scolarite')->with('success', 'Les documents ont été envoyés, la demande a été archivée et supprimée de la liste.');
     }
+    
     
     public function scolarite()
     {

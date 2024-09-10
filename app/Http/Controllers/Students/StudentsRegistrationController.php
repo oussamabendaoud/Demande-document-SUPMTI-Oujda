@@ -51,14 +51,21 @@ class StudentsRegistrationController extends Controller
         'diploma_speciality' => 'nullable|string|max:255',
         'diploma_mention' => 'nullable|string|max:255',
         'diploma_location' => 'nullable|string|max:255',
-        'first_registration_year' => 'nullable|integer|min:1900|max:' . date('Y'),
+        'first_registration_year' => 'required|string|max:255' ,
         'handicap' => 'nullable|string|max:255',
         'resident' => 'boolean',
         'civil_servant' => 'boolean',
         'scholarship_percentage' => 'nullable|integer|min:0|max:100',
         'mobility_student' => 'boolean',
-        'documents_submitted' => 'nullable|string|max:255',
+        'niveaux' => 'nullable|string|max:255',
+        'cin' => 'nullable|string|max:255',
+        'diplome_bac' => 'nullable|string|max:255',
+        'relv_note' => 'nullable|string|max:255',
+        'att_rs' => 'nullable|string|max:255',
     ]);
+
+
+
 
     if (is_array($request->input('type_filier'))) {
         // Si c'est un tableau, utiliser implode pour convertir en chaîne

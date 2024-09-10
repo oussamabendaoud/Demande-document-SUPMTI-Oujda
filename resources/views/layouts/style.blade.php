@@ -94,7 +94,7 @@
                         <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Communication</span>
                     </a>
                     @endif
-                    @if(Auth::check() && Auth::user()->hasRole('Admin'))
+                    @if(Auth::check() && Auth::user()->hasRole('scolarité|Admin'))
                     <div class="btn-group shadow-0 mb-2 dropend">
                         <button type="button" class="list-group-item list-group-item-action py-2 dropdown-toggle"
                             data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false"><i
@@ -104,7 +104,7 @@
                             <li><a class="dropdown-item {{ Request::is('users') ? 'active' : '' }}"
                                     href="{{ route('students.list') }}">Liste d'inscriptions</a></li>
                             <li><a class="dropdown-item {{ Request::is('roles') ? 'active' : '' }}"
-                                    href="{{ route('roles.index') }}">Manage Role</a></li>
+                                    href="{{ route('service.scolarite') }}">les demandes du documents</a></li>
                         </ul>
                     </div>
                     @endif
@@ -116,7 +116,7 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item {{ Request::is('users') ? 'active' : '' }}"
-                                    href="{{ route('users.index') }}">Manage Users</a></li>
+                                    href="{{ route('users.index') }}"></a></li>
                             <li><a class="dropdown-item {{ Request::is('roles') ? 'active' : '' }}"
                                     href="{{ route('roles.index') }}">Manage Role</a></li>
                         </ul>

@@ -34,13 +34,17 @@ class CreateStudentsRegistrationTable extends Migration
             $table->string('diploma_speciality')->nullable(); // Spécialité du diplôme
             $table->string('diploma_mention')->nullable(); // Mention du diplôme
             $table->string('diploma_location')->nullable(); // Lieu d'obtention du diplôme
-            $table->year('first_registration_year'); // Première année d'inscription à l'établissement
+            $table->string('first_registration_year'); // Première année d'inscription à l'établissement
             $table->string('handicap')->nullable(); // Situation de handicap
             $table->boolean('resident')->default(false); // Statut de résident (Oui ou Non)
             $table->boolean('civil_servant')->default(false); // Statut de fonctionnaire (Oui ou Non)
             $table->integer('scholarship_percentage')->nullable(); // Pourcentage de la bourse
             $table->boolean('mobility_student')->default(false); // Statut d'étudiant en mobilité (Oui ou Non)
-            $table->string('documents_submitted')->nullable(); // Documents fournis
+            $table->string('niveaux')->nullable(); // Documents fournis
+            $table->string('cin')->nullable(); // Documents fournis
+            $table->string('diplome_bac')->nullable(); // Documents fournis
+            $table->string('relv_note')->nullable(); // Documents fournis
+            $table->string('att_rs')->nullable(); // Documents fournis
             $table->timestamps(); // Horodatages created_at et updated_at
         });
     }

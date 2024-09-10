@@ -57,13 +57,13 @@
 
                     <!-- Champ pour le CNIE -->
                     <div class="col-md-4">
-                        <label for="cnie" class="form-label">CNIE (facultatif)</label>
+                        <label for="cnie" class="form-label">CIN</label>
                         <input type="text" class="form-control" id="cnie" name="cnie" value="{{ old('cnie') }}">
                     </div>
 
                     <!-- Champ pour le passeport -->
                     <div class="col-md-4">
-                        <label for="passport" class="form-label">Passeport (facultatif)</label>
+                        <label for="passport" class="form-label">Passeport </label>
                         <input type="text" class="form-control" id="passport" name="passport"
                             value="{{ old('passport') }}">
                     </div>
@@ -108,7 +108,7 @@
 
                     <!-- Champ pour la province (liste des villes) -->
                     <div class="col-md-4">
-                        <label for="province" class="form-label">Ville/Province</label>
+                        <label for="province" class="form-label">Ville</label>
                         <select class="form-select" id="province" name="city" required>
                             <option selected disabled value="">Sélectionnez une ville</option>
                             <option value="Agadir" {{ old('province') == 'Agadir' ? 'selected' : '' }}>Agadir</option>
@@ -124,9 +124,64 @@
                             value="{{ old('field_code') }}" required>
                     </div>
 
-                    <!-- Champ pour le type de filière -->
+
+
+                    <!-- Champ pour le niveau d'étude -->
                     <div class="col-md-4">
-                        <label for="type_filier" class="form-label">Type de filière</label>
+                        <label for="level_of_study" class="form-label">Niveau d'étude</label>
+                        <select class="form-select" id="level_of_study" name="level_of_study" required>
+                            <option value="" disabled selected>Choisissez un niveau</option>
+                            <option value="1" {{ old('level_of_study') == 1 ? 'selected' : '' }}>1ère année</option>
+                            <option value="2" {{ old('level_of_study') == 2 ? 'selected' : '' }}>2ème année</option>
+                            <option value="3" {{ old('level_of_study') == 3 ? 'selected' : '' }}>3ème année</option>
+                            <option value="4" {{ old('level_of_study') == 4 ? 'selected' : '' }}>4ème année</option>
+
+                        </select>
+                    </div>
+
+
+
+
+                    <!-- Champ pour l'année du baccalauréat -->
+                    <div class="col-md-4">
+                        <label for="baccalaureate_year" class="form-label">Année du baccalauréat</label>
+                        <select class="form-control" id="baccalaureate_year" name="baccalaureate_year" required>
+                            <option value="">Sélectionnez l'année</option>
+                            @for($year = date('Y'); $year >= 2017; $year--)
+                            <option value="{{ $year }}" {{ old('baccalaureate_year') == $year ? 'selected' : '' }}>
+                                {{ $year }}</option>
+                            @endfor
+                        </select>
+                    </div>
+
+
+                    <!-- Champ pour la spécialité du diplôme -->
+                    <div class="col-md-4">
+                        <label for="diploma_speciality" class="form-label">Spécialité du diplôme </label>
+                        <input type="text" class="form-control" id="diploma_speciality" name="diploma_speciality"
+                            value="{{ old('diploma_speciality') }}">
+                    </div>
+
+                    <!-- Champ pour la mention du diplôme -->
+
+
+                    <!-- Champ pour le lieu d'obtention du diplôme -->
+                    <div class="col-md-4">
+                        <label for="diploma_location" class="form-label">Lieu d'obtention du diplôme
+                            (facultatif)</label>
+                        <input type="text" class="form-control" id="diploma_location" name="diploma_location"
+                            value="{{ old('diploma_location') }}">
+                    </div>
+
+                    <!-- Champ pour la première année d'inscription -->
+                    <div class="col-md-4">
+                        <label for="first_registration_year" class="form-label">Première année d'inscription</label>
+                        <input type="date" class="form-control" id="first_registration_year"
+                            name="first_registration_year" value="{{ old('first_registration_year') }}" required>
+                    </div>
+
+                    <!-- Champ pour le type de filière -->
+                    <div class="col-md-4"> filière d'acces</label>
                         <select class="form-select" id="type_filier" name="type_filier[]" multiple required>
                             <option value="Sciences"
                                 {{ in_array('Sciences', old('type_filier', [])) ? 'selected' : '' }}>Sciences</option>
@@ -142,121 +197,99 @@
                         </select>
                     </div>
 
-                    <!-- Champ pour le niveau d'étude -->
-                    <div class="col-md-4">
-                        <label for="level_of_study" class="form-label">Niveau d'étude</label>
-                        <input type="number" class="form-control" id="level_of_study" name="level_of_study"
-                            value="{{ old('level_of_study') }}" min="1" max="7" required>
-                    </div>
 
-                    <!-- Champ pour le statut étudiant -->
-                    <div class="col-md-4">
-                        <label for="student_status" class="form-label">Statut de l'étudiant (facultatif)</label>
-                        <input type="text" class="form-control" id="student_status" name="student_status"
-                            value="{{ old('student_status') }}">
-                    </div>
 
-                    <!-- Champ pour le diplôme d'accès -->
-                    <div class="col-md-4">
-                        <label for="diploma_access" class="form-label">Diplôme d'accès (facultatif)</label>
-                        <input type="text" class="form-control" id="diploma_access" name="diploma_access"
-                            value="{{ old('diploma_access') }}">
-                    </div>
-
-                    <!-- Champ pour la série du baccalauréat -->
-                    <div class="col-md-4">
-                        <label for="baccalaureate_series" class="form-label">Série du baccalauréat (facultatif)</label>
-                        <input type="text" class="form-control" id="baccalaureate_series" name="baccalaureate_series"
-                            value="{{ old('baccalaureate_series') }}">
-                    </div>
-
-                    <!-- Champ pour l'année du baccalauréat -->
-                    <div class="col-md-4">
-                        <label for="baccalaureate_year" class="form-label">Année du baccalauréat</label>
-                        <input type="number" class="form-control" id="baccalaureate_year" name="baccalaureate_year"
-                            value="{{ old('baccalaureate_year') }}" min="1900" max="{{ date('Y') }}" required>
-                    </div>
-
-                    <!-- Champ pour la spécialité du diplôme -->
-                    <div class="col-md-4">
-                        <label for="diploma_speciality" class="form-label">Spécialité du diplôme (facultatif)</label>
-                        <input type="text" class="form-control" id="diploma_speciality" name="diploma_speciality"
-                            value="{{ old('diploma_speciality') }}">
-                    </div>
-
-                    <!-- Champ pour la mention du diplôme -->
-                    <div class="col-md-4">
-                        <label for="diploma_mention" class="form-label">Mention du diplôme (facultatif)</label>
-                        <input type="text" class="form-control" id="diploma_mention" name="diploma_mention"
-                            value="{{ old('diploma_mention') }}">
-                    </div>
-
-                    <!-- Champ pour le lieu d'obtention du diplôme -->
-                    <div class="col-md-4">
-                        <label for="diploma_location" class="form-label">Lieu d'obtention du diplôme
-                            (facultatif)</label>
-                        <input type="text" class="form-control" id="diploma_location" name="diploma_location"
-                            value="{{ old('diploma_location') }}">
-                    </div>
-
-                    <!-- Champ pour la première année d'inscription -->
-                    <div class="col-md-4">
-                        <label for="first_registration_year" class="form-label">Première année d'inscription</label>
-                        <input type="number" class="form-control" id="first_registration_year"
-                            name="first_registration_year" value="{{ old('first_registration_year') }}" min="1900"
-                            max="{{ date('Y') }}" required>
-                    </div>
-
-                    <!-- Champ pour le handicap -->
-                    <div class="col-md-4">
-                        <label for="handicap" class="form-label">Handicap (facultatif)</label>
-                        <input type="text" class="form-control" id="handicap" name="handicap"
-                            value="{{ old('handicap') }}">
-                    </div>
-
-                    <!-- Champ pour le statut résident -->
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="resident" name="resident" value="1"
-                                {{ old('resident') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="resident">Statut résident</label>
-                        </div>
-                    </div>
-
-                    <!-- Champ pour le statut fonctionnaire -->
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="civil_servant" name="civil_servant"
-                                value="1" {{ old('civil_servant') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="civil_servant">Fonctionnaire</label>
-                        </div>
-                    </div>
-
-                    <!-- Champ pour le pourcentage de bourse -->
-                    <div class="col-md-4">
-                        <label for="scholarship_percentage" class="form-label">Pourcentage de bourse
-                            (facultatif)</label>
-                        <input type="number" class="form-control" id="scholarship_percentage"
-                            name="scholarship_percentage" value="{{ old('scholarship_percentage') }}" min="0" max="100">
-                    </div>
-
-                    <!-- Champ pour le statut étudiant en mobilité -->
-                    <div class="col-md-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="mobility_student"
-                                name="mobility_student" value="1" {{ old('mobility_student') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="mobility_student">Étudiant en mobilité</label>
-                        </div>
-                    </div>
 
                     <!-- Champ pour les documents soumis -->
-                    <div class="col-md-4">
-                        <label for="documents_submitted" class="form-label">Documents soumis (facultatif)</label>
-                        <input type="text" class="form-control" id="documents_submitted" name="documents_submitted"
-                            value="{{ old('documents_submitted') }}">
+
+
+                    <!-- les check box  -->
+                    <!-- Bac  -->
+                    <div class="col-md-12">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveaux" value="bac"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    BAC
+                                </label>
+                            </div>
+                            <!-- Bac  +2-->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveaux" value="bac2"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    BAC +2
+                                </label>
+                            </div>
+                            <!-- Bac  +3-->
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="niveaux" value="bac3"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    BAC +3
+                                </label>
+                            </div>
+                        </div>
+
+
+                        <!-- Bac  -->
+                        <div class="row bac box">
+                            <div class="col-md-6 mb-3">
+                                <label>CIN *</label>
+                                <input class="form-control" type="file" name="cin">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Diplome baccaloreat *</label>
+                                <input class="form-control" type="file" name="diplome_bac">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Relevé des notes *</label>
+                                <input class="form-control" type="file" name="relv_note">
+                            </div>
+                        </div>
+
+                        <!-- Bac +2 -->
+                        <div class="row bac2 box">
+                            <div class="col-md-6 mb-3">
+                                <label>CIN _ Fiche relative à l'admision parallèlle *</label>
+                                <input class="form-control" type="file" name="cin">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Diplome baccaloreat *</label>
+                                <input class="form-control" type="file" name="diplome_bac">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Attestation de reussite de Bac+2 *</label>
+                                <input class="form-control" type="file" name="att_rs">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Relevés des années d'études.*</label>
+                                <input class="form-control" type="file" name="relv_note">
+                            </div>
+                        </div>
+
+                        <!-- Bac +3 -->
+                        <div class="row bac3 box">
+                            <div class="col-md-6 mb-3">
+                                <label>CIN _ Fiche relative à l'admision parallèlle *</label>
+                                <input class="form-control" type="file" name="cin">
+                            </div>
+                            <div class=" col-md-6 mb-3">
+                                <label>Diplome baccaloreat *</label>
+                                <input class="form-control" type="file" name="diplome_bac">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Diplome de licence *</label>
+                                <input class="form-control" type="file" name="att_rs">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Relevés des années d'études.*</label>
+                                <input class="form-control" type="file" name="relv_note">
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Soumettre le formulaire -->
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Envoyer</button>
                     </div>
@@ -268,7 +301,48 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+
+
     </script>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const bacBox = document.querySelector('.bac');
+        const bac2Box = document.querySelector('.bac2');
+        const bac3Box = document.querySelector('.bac3');
+
+        // Hide all sections by default
+        hideAll();
+
+        // Add event listeners for each radio button
+        document.querySelectorAll('input[name="niveaux"]').forEach((radio) => {
+            radio.addEventListener('change', function() {
+                hideAll();
+                if (this.value === 'bac') {
+                    bacBox.style.display = 'block';
+                } else if (this.value === 'bac2') {
+                    bac2Box.style.display = 'block';
+                } else if (this.value === 'bac3') {
+                    bac3Box.style.display = 'block';
+                }
+            });
+        });
+
+        function hideAll() {
+            bacBox.style.display = 'none';
+            bac2Box.style.display = 'none';
+            bac3Box.style.display = 'none';
+        }
+
+        // Set the initial display based on the checked radio button
+        const checkedRadio = document.querySelector('input[name="niveaux"]:checked');
+        if (checkedRadio) {
+            checkedRadio.dispatchEvent(new Event('change'));
+        }
+    });
+    </script>
+
 </body>
 
 </html>
