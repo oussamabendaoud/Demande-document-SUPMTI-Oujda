@@ -41,10 +41,23 @@ class CreateStudentsRegistrationTable extends Migration
             $table->integer('scholarship_percentage')->nullable(); // Pourcentage de la bourse
             $table->boolean('mobility_student')->default(false); // Statut d'étudiant en mobilité (Oui ou Non)
             $table->string('niveaux')->nullable(); // Documents fournis
-            $table->string('cin')->nullable(); // Documents fournis
-            $table->string('diplome_bac')->nullable(); // Documents fournis
-            $table->string('relv_note')->nullable(); // Documents fournis
-            $table->string('att_rs')->nullable(); // Documents fournis
+           // Fichiers pour Bac
+        $table->string('cin_bac')->nullable(); // Chemin du fichier CIN pour Bac
+        $table->string('diplome_bac')->nullable(); // Chemin du Diplôme baccalauréat pour Bac
+        $table->string('relv_note_bac')->nullable(); // Chemin du Relevé de notes pour Bac
+
+        // Fichiers pour Bac +2
+        $table->string('cin_bac2')->nullable(); // Chemin du fichier CIN pour Bac +2
+        $table->string('diplome_bac2')->nullable(); // Chemin du Diplôme baccalauréat pour Bac +2
+        $table->string('att_rs_bac2')->nullable(); // Chemin de l'attestation de réussite pour Bac +2
+        $table->string('relv_note_bac2')->nullable(); // Chemin du Relevé de notes pour Bac +2
+
+        // Fichiers pour Bac +3
+        $table->string('cin_bac3')->nullable(); // Chemin du fichier CIN pour Bac +3
+        $table->string('diplome_bac3')->nullable(); // Chemin du Diplôme baccalauréat pour Bac +3
+        $table->string('att_rs_bac3')->nullable(); // Chemin du Diplôme de licence pour Bac +3
+        $table->string('relv_note_bac3')->nullable(); // Chemin du Relevé de notes pour Bac +3
+
             $table->timestamps(); // Horodatages created_at et updated_at
         });
     }

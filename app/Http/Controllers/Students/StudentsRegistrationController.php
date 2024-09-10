@@ -30,6 +30,7 @@ class StudentsRegistrationController extends Controller
      */
     public function store(Request $request)
 {
+    //dd($request->all());    
     // Valider les données de la requête entrante
     $validated = $request->validate([
         'massar_cne' => 'required|string|max:255',
@@ -58,11 +59,57 @@ class StudentsRegistrationController extends Controller
         'scholarship_percentage' => 'nullable|integer|min:0|max:100',
         'mobility_student' => 'boolean',
         'niveaux' => 'nullable|string|max:255',
-        'cin' => 'nullable|string|max:255',
-        'diplome_bac' => 'nullable|string|max:255',
-        'relv_note' => 'nullable|string|max:255',
-        'att_rs' => 'nullable|string|max:255',
-    ]);
+       
+                // Validation pour les fichiers Bac
+                'cin_bac' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'diplome_bac' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'relv_note_bac' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+        
+                // Validation pour les fichiers Bac +2
+                'cin_bac2' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'diplome_bac2' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'att_rs_bac2' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'relv_note_bac2' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+        
+                // Validation pour les fichiers Bac +3
+                'cin_bac3' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'diplome_bac3' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'att_rs_bac3' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+                'relv_note_bac3' => 'nullable|file|mimes:pdf,jpg,png|max:5120',
+            ]);
+
+            if ($request->hasFile('cin_bac')) {
+                $validated['cin_bac'] = $request->file('cin_bac')->store('documents/bac');
+            }
+            if ($request->hasFile('diplome_bac')) {
+                $validated['diplome_bac'] = $request->file('diplome_bac')->store('documents/bac');
+            }
+            if ($request->hasFile('relv_note_bac')) {
+                $validated['relv_note_bac'] = $request->file('relv_note_bac')->store('documents/bac');
+            }
+        
+            // Gérer les fichiers pour Bac +2
+            if ($request->hasFile('cin_bac2')) {
+                $validated['cin_bac2'] = $request->file('cin_bac2')->store('documents/bac2');
+            }
+            if ($request->hasFile('diplome_bac2')) {
+                $validated['diplome_bac2'] = $request->file('diplome_bac2')->store('documents/bac2');
+            }
+            if ($request->hasFile('relv_note_bac2')) {
+                $validated['relv_note_bac2'] = $request->file('relv_note_bac2')->store('documents/bac2');
+            }
+        
+            // Gérer les fichiers pour Bac +3
+            if ($request->hasFile('cin_bac3')) {
+                $validated['cin_bac3'] = $request->file('cin_bac3')->store('documents/bac3');
+            }
+            if ($request->hasFile('diplome_bac3')) {
+                $validated['diplome_bac3'] = $request->file('diplome_bac3')->store('documents/bac3');
+            }
+            if ($request->hasFile('relv_note_bac3')) {
+                $validated['relv_note_bac3'] = $request->file('relv_note_bac3')->store('documents/bac3');
+            }
+   
 
 
 

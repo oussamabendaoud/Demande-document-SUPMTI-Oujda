@@ -46,7 +46,8 @@
                 @endif
 
                 <!-- Formulaire pour l'inscription des étudiants -->
-                <form class="row g-3" action="{{ route('students.store') }}" method="POST">
+                <form class="row g-3" action="{{ route('students.store') }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     <!-- Champ pour le Massar CNE -->
                     <div class="col-md-4">
@@ -233,19 +234,19 @@
                         </div>
 
 
-                        <!-- Bac  -->
+                        <!-- Bac -->
                         <div class="row bac box">
                             <div class="col-md-6 mb-3">
                                 <label>CIN *</label>
-                                <input class="form-control" type="file" name="cin">
+                                <input class="form-control" type="file" name="cin_bac">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Diplome baccaloreat *</label>
+                                <label>Diplome baccalauréat *</label>
                                 <input class="form-control" type="file" name="diplome_bac">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Relevé des notes *</label>
-                                <input class="form-control" type="file" name="relv_note">
+                                <input class="form-control" type="file" name="relv_note_bac">
                             </div>
                         </div>
 
@@ -253,41 +254,42 @@
                         <div class="row bac2 box">
                             <div class="col-md-6 mb-3">
                                 <label>CIN _ Fiche relative à l'admision parallèlle *</label>
-                                <input class="form-control" type="file" name="cin">
+                                <input class="form-control" type="file" name="cin_bac2">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Diplome baccaloreat *</label>
-                                <input class="form-control" type="file" name="diplome_bac">
+                                <label>Diplome baccalauréat *</label>
+                                <input class="form-control" type="file" name="diplome_bac2">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Attestation de reussite de Bac+2 *</label>
-                                <input class="form-control" type="file" name="att_rs">
+                                <input class="form-control" type="file" name="att_rs_bac2">
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Relevés des années d'études.*</label>
-                                <input class="form-control" type="file" name="relv_note">
+                                <input class="form-control" type="file" name="relv_note_bac2">
                             </div>
                         </div>
 
                         <!-- Bac +3 -->
                         <div class="row bac3 box">
                             <div class="col-md-6 mb-3">
-                                <label>CIN _ Fiche relative à l'admision parallèlle *</label>
-                                <input class="form-control" type="file" name="cin">
-                            </div>
-                            <div class=" col-md-6 mb-3">
-                                <label>Diplome baccaloreat *</label>
-                                <input class="form-control" type="file" name="diplome_bac">
+                                <label>CIN _ Fiche relative à l'admission parallèle *</label>
+                                <input class="form-control" type="file" name="cin_bac3">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Diplome de licence *</label>
-                                <input class="form-control" type="file" name="att_rs">
+                                <label>Diplôme baccalauréat *</label>
+                                <input class="form-control" type="file" name="diplome_bac3">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label>Relevés des années d'études.*</label>
-                                <input class="form-control" type="file" name="relv_note">
+                                <label>Diplôme de licence *</label>
+                                <input class="form-control" type="file" name="att_rs_bac3">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label>Relevé des années d'études.*</label>
+                                <input class="form-control" type="file" name="relv_note_bac3">
                             </div>
                         </div>
+
                     </div>
 
                     <div class="col-12">
